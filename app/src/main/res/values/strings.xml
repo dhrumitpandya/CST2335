@@ -9,4 +9,5 @@
     <string name="CheckBoxText">Button 2</string>
     <string name="ImageButton">Enable Something</string>
     <string name="SwitchText">text</string>
+    <string name="dialog_message">Message</string>
 </resources>
