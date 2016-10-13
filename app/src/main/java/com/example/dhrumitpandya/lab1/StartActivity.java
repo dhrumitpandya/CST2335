@@ -37,21 +37,16 @@ public class StartActivity extends AppCompatActivity {
 
             }
 
-            public void onActivityResult(int requestCode, int resultCode, Intent data){
-
-                if(requestCode==5)
-                {
-                    Log.i(ACTIVITY_NAME,"Returnes to StartActivity.onActivityResult");
-                }
-                if(resultCode== Activity.RESULT_OK){
-                    String messgPassed = data.getStringExtra("Response");
-                    Toast toast = Toast.makeText(StartActivity.this,messgPassed,Toast.LENGTH_LONG);
-                    toast.show();
-                }
-            }
-
         });
 
+        Button button3 = (Button) findViewById(R.id.button3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(ACTIVITY_NAME,"User clicked Start Chat");
+                StartActivity.this.startActivityForResult(new Intent(StartActivity.this, ChatWindow.class), 5);
+            }
+        });
     }
 
     @Override
@@ -63,7 +58,20 @@ public class StartActivity extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
 
     }
+    @Override
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+
+        if(requestCode==5)
+        {
+            Log.i(ACTIVITY_NAME,"Returnes to StartActivity.onActivityResult");
+        }
+        if(resultCode== Activity.RESULT_OK){
+            String messgPassed = data.getStringExtra("Response");
+            Toast toast = Toast.makeText(StartActivity.this,messgPassed,Toast.LENGTH_LONG);
+            toast.show();
+        }
+    }
     @Override
     public void onStop() {
         super.onStop();

@@ -45,13 +45,7 @@ public class ListItemsActivity extends AppCompatActivity {
                 }
             }
 
-            public void onActivityResult(int requestCode, int resultCode, Intent data) {
-                if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-                    Bundle extras = data.getExtras();
-                    Bitmap imageBitmap = (Bitmap) extras.get("data");
-                    img_button.setImageBitmap(imageBitmap);
-                }
-            }
+
 
         });
 
@@ -101,7 +95,15 @@ public class ListItemsActivity extends AppCompatActivity {
             }
         });
     }
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            ImageButton img_button = (ImageButton) findViewById(R.id.imageButton);
+            img_button.setImageBitmap(imageBitmap);
+        }
+    }
     @Override
     protected  void onResume(){
         super.onResume();
