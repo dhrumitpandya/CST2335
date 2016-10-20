@@ -1,10 +1,14 @@
 package com.example.dhrumitpandya.lab1;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 
 import android.view.View;
@@ -28,7 +32,7 @@ public class ChatWindow extends AppCompatActivity {
     private ArrayList<String> chatList;
     private ChatAdapter adapter;
 
-
+    protected SQLiteDatabase dbWrite;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,17 +45,38 @@ public class ChatWindow extends AppCompatActivity {
         chatList = new ArrayList<String>();
         adapter = new ChatAdapter(this, chatList);
         LV.setAdapter(adapter);
+        final ChatDatabaseHelper chatDatabaseHelper = new ChatDatabaseHelper(this);
+        dbWrite=chatDatabaseHelper.getWritableDatabase();
+        // Cursor cursor = dbWrite.query(ChatDatabaseHelper.TABLE_NAME , new  String[]{ChatDatabaseHelper.KEY_MESSAGE},null, null, null, null, null, null);
+        Cursor cursor = dbWrite.query(ChatDatabaseHelper.TABLE_NAME, new String[]{ChatDatabaseHelper.KEY_MESSAGE},
+                null, null, null, null, null, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast() ) {
+            String strTemp = cursor.getString(cursor.getColumnIndex(ChatDatabaseHelper.KEY_MESSAGE));
+            Log.i(ACTIVITY_NAME, "SQL MESSAGE:" + strTemp);
+            chatList.add(strTemp);
+            cursor.moveToNext();
+        }
+        Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + cursor.getColumnCount());
+        for(int i =0 ;i<cursor.getColumnCount();i++)
+        {
+            Log.i(ACTIVITY_NAME,"Column"+(i+1)+";"+cursor.getColumnName(i));
 
+        }
 
         BT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // get the text from the edit text, and add it to the
-                if (ET.getText().toString().length() > 0) {
-                    chatList.add(ET.getText().toString());
+              //  if (ET.getText().toString().length() > 0) {
+                String strTemp = ET.getText().toString();
+                    chatList.add(strTemp);
                     adapter.notifyDataSetChanged();
                     ET.setText("");
-                }
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put(chatDatabaseHelper.KEY_MESSAGE, strTemp);
+                    dbWrite.insert(chatDatabaseHelper.TABLE_NAME, "null", contentValues);
+               // }
             }
         });
 
