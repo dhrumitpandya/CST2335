@@ -11,4 +11,7 @@
     <string name="SwitchText">text</string>
     <string name="dialog_message">Message</string>
     <string name="title_activity_chat_window">ChatWindow</string>
+    <string name="currentTextView">Current Temperature</string>
+    <string name="minTextView">Minimum Temperature</string>
+    <string name="maxTextView">Maximum Temperature</string>
 </resources>

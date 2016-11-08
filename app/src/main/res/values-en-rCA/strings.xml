@@ -10,4 +10,7 @@
     <string name="CheckBoxText">Its a checkbox</string>
     <string name="ImageButton">It will show image</string>
     <string name="SwitchText">It will change text</string>
+    <string name="currentTextView">Current Temperature</string>
+    <string name="minTextView">Minimum Temperature</string>
+    <string name="maxTextView">Maximum Temperature</string>
 </resources>
