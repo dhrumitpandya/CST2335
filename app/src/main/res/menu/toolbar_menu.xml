@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/action_one"
+        android:title="Choice1"
+        android:icon="@drawable/homeicon"
+        android:orderInCategory="1"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/action_two"
+        android:title="Choice2"
+        android:icon="@drawable/music"
+        android:orderInCategory="2"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/action_three"
+        android:title="Choice3"
+        android:icon="@drawable/camera"
+        android:orderInCategory="3"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/action_four"
+        android:title="Choice4"
+        android:icon="@drawable/more"
+        android:orderInCategory="4"
+        app:showAsAction="always" >
+        <menu>
+            <item android:id="@+id/about"
+                android:title="About"
+                android:showAsAction="never"
+                android:orderInCategory="4"
+                app:showAsAction="always" >
+            </item>
+        </menu>
+        </item>
+
+</menu>

@@ -14,4 +14,12 @@
     <string name="currentTextView">Current Temperature</string>
     <string name="minTextView">Minimum Temperature</string>
     <string name="maxTextView">Maximum Temperature</string>
+    <string name="title_message_list">Messages</string>
+    <string name="title_message_detail">Message Detail</string>
+    <string name="title_activity_test_toolbar">TestToolbar</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="change_message">changed message</string>
+    <string name="new_message">Please enter Email Id</string>
+
 </resources>

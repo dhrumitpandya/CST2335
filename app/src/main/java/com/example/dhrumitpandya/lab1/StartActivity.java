@@ -44,7 +44,7 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i(ACTIVITY_NAME,"User clicked Start Chat");
-                StartActivity.this.startActivityForResult(new Intent(StartActivity.this, ChatWindow.class), 5);
+                StartActivity.this.startActivityForResult(new Intent(StartActivity.this, MessageListActivity.class), 5);
             }
         });
 
@@ -53,6 +53,16 @@ public class StartActivity extends AppCompatActivity {
                                        @Override
                                        public void onClick(View v) {
                                            startActivity(new Intent(StartActivity.this, WeatherForecast.class));
+                                       }
+                                   }
+
+        );
+
+        Button toolbar = (Button) findViewById(R.id.button6);
+        toolbar.setOnClickListener(new View.OnClickListener() {
+                                       @Override
+                                       public void onClick(View v) {
+                                           startActivity(new Intent(StartActivity.this, TestToolbar.class));
                                        }
                                    }
 
