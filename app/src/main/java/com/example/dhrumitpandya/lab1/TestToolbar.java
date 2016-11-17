@@ -18,7 +18,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 public class TestToolbar extends AppCompatActivity {
-    private String item1Message;
+    private String item1Message="You clicked Item 1";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +46,7 @@ public class TestToolbar extends AppCompatActivity {
         switch(mi.getItemId()){
             case R.id.action_one:
                 Log.d("Toolbar", "Home Selected");
-                Snackbar.make(findViewById(android.R.id.content), "Clicked on Home Menu", Snackbar.LENGTH_LONG)
+                Snackbar.make(findViewById(android.R.id.content),item1Message, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 break;
 
